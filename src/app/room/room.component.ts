@@ -3,11 +3,12 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
+
 interface Message{
   username : string,
   message : string,
-  date : Date,
-  room : number
+  // date : Date,
+  // room : number
 }
 
 
@@ -20,12 +21,18 @@ export class RoomComponent implements OnInit {
 
   MessageCollection: AngularFirestoreCollection<Message>
   messages: Observable<Message[]>
+  username : string
+  comment : string
   
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit() {
     this.MessageCollection = this.afs.collection('messages');
     this.messages = this.MessageCollection.valueChanges();
+  }
+
+  submitcomment(){
+    this.afs.collection('messages').add({ 'username' : this.username, 'message' : this.comment  })
   }
 
 }

@@ -8,6 +8,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { RoomComponent } from './room/room.component';
 
+//Angular Material
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 var firebaseconfig = {
   apiKey: "AIzaSyBgAeG2uvRMSSB7FnKfPGTZNogrtuAOU74",
   authDomain: "chatroom-f2b0f.firebaseapp.com",
@@ -27,7 +33,10 @@ var firebaseconfig = {
     BrowserModule,
     AngularFireModule.initializeApp(firebaseconfig),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
