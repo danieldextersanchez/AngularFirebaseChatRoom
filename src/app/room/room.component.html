@@ -1,0 +1,7 @@
+<div *ngFor="let message of messages | async" class='messagebubble'>
+  <div>
+    {{ message.username  }} {{ message.date.toDate() | date:"MM/dd/yyyy 'at' h:mma"  }}<hr>
+    {{ message.message  }}
+
+  </div>
+</div>
