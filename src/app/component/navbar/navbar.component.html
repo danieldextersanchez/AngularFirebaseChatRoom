@@ -3,11 +3,31 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse" id="navbarNav" *ngIf="Auth.user | async as user; else showLogin">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/register" >Register<span class="sr-only">(current)</span></a>
-      </li>
+        <li class="nav-item active" >
+            <a class="nav-link" (click)="goto('Profile')" > {{user.displayName}}</a>
+        </li>
+        <li class="nav-item active" >
+            <a class="nav-link" (click)="logout()" > Logout</a>
+        </li>
+        <      
     </ul>
   </div>
 </nav>
+
+
+
+
+<ng-template #showLogin>
+    <div class="collapse navbar-collapse" id="navbarNav" >
+        <ul class="navbar-nav">
+    <li class="nav-item active" >
+        <a class="nav-link" (click)="login()" >Login </a>
+    </li>
+    <li class="nav-item active" >
+        <a class="nav-link" routerLink="/register" >Register<span class="sr-only"></span></a>
+      </li>
+      </ul>
+    </div>
+</ng-template>

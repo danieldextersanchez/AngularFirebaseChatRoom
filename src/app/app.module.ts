@@ -11,7 +11,7 @@ import{HttpClientModule} from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { RoomComponent } from './component/room/room.component';
-
+import { AngularFireAuth } from '@angular/fire/auth';
 //Angular Material
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -22,9 +22,18 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { UserListComponent } from './component/user-list/user-list.component';
 
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { LoginComponent } from './component/login/login.component';
 import { RegisterformComponent } from './component/registerform/registerform.component';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
+
 
 
 var firebaseconfig = {
@@ -35,6 +44,7 @@ var firebaseconfig = {
   storageBucket: "chatroom-f2b0f.appspot.com",
   messagingSenderId: "622730052233"
 };
+
 
 const AppRoutes: Routes = [
   {
@@ -75,9 +85,19 @@ const AppRoutes: Routes = [
     MatInputModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
-    HttpClientModule
+    HttpClientModule,
+    PerfectScrollbarModule,
+    
   ],
-  providers: [FirebaseService],
+  providers: [
+    FirebaseService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    AngularFireAuth
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

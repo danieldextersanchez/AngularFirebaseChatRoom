@@ -1,10 +1,5 @@
-<div >
-  <div style='width:5%;border:black 10 px'>
 
-  </div>
-  
-  <div style='width:90%'>
-    <div id='room'>
+    <perfect-scrollbar id='room'   [config]="config" > 
       <div *ngFor="let message of messages | async" class='messagebubble center' >
         <div>
           {{ message.username  }} 
@@ -14,10 +9,10 @@
       
         </div>
        </div>
-       </div>
+   </perfect-scrollbar>
 
-  </div>
-</div>
+
+
 
 
 
@@ -35,8 +30,7 @@
   <mat-form-field class="full-width">
     <textarea matInput placeholder="Comment" [(ngModel)] = "comment"></textarea>
   </mat-form-field>
-  <mat-form-field class='full-width'>
+  
       <button mat-flat-button (click)="submitcomment()" >Send Message</button>
-  </mat-form-field>
+ 
 </div>
-

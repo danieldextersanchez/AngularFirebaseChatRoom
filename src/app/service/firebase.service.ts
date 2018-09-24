@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { RoomMessage } from '../interface/messages';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 
 interface Message{
@@ -19,7 +21,8 @@ export class FirebaseService {
   messages: Observable<Message[]>
   username : string
   comment : string
-  constructor(private afs: AngularFirestore) { }
+  data ;
+  constructor(private afs: AngularFirestore,private afAuth: AngularFireAuth) { }
 
 
   getMessageList(){
@@ -30,5 +33,14 @@ export class FirebaseService {
 
   addComment(RoomMessage : RoomMessage){
     this.afs.collection('messages').add(RoomMessage)
+  }
+  login() {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+  logout() {
+    this.afAuth.auth.signOut();
+  }
+  checklogin(){
+    return this.afAuth;
   }
 }

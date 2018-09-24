@@ -1,9 +1,10 @@
 .messagebubble{
     border-radius:20px;
     background-color: #3BA1EA;
-    max-width:200px;
+    max-width:10%;
     padding:20px;
     margin-bottom:20px;
+    margin-right:50px;
 }
 
 .example-form {
@@ -23,3 +24,4 @@
     widows: 50%;
     width:100%;
   }
+
