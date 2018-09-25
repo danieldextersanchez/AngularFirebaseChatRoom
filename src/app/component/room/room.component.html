@@ -2,7 +2,8 @@
     <perfect-scrollbar id='room'   [config]="config" > 
       <div *ngFor="let message of messages | async" class='messagebubble center' >
         <div>
-          {{ message.username  }} 
+          {{ message.username  }} <br>
+          {{message.date | date}} {{ message.date | date: 'h:mm a'}}
           <!-- {{ message.date.toDate() | date:"MM/dd/yyyy 'at' h:mma"  }} -->
           <hr>
           {{ message.message  }}

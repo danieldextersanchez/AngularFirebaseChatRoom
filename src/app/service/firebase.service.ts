@@ -5,20 +5,15 @@ import 'rxjs/add/operator/map';
 import { RoomMessage } from '../interface/messages';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { first, tap } from 'rxjs/operators';
 
 
-interface Message{
-  username : string,
-  message : string,
-  // date : Date,
-  // room : number
-}
 
 
 @Injectable()
 export class FirebaseService {
-  MessageCollection: AngularFirestoreCollection<Message>
-  messages: Observable<Message[]>
+  MessageCollection: AngularFirestoreCollection<RoomMessage>
+  messages: Observable<RoomMessage[]>
   username : string
   comment : string
   data ;
@@ -41,6 +36,8 @@ export class FirebaseService {
     this.afAuth.auth.signOut();
   }
   checklogin(){
-    return this.afAuth;
+    return this.afAuth.authState.pipe(first());
   }
+
+  
 }
