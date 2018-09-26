@@ -1,17 +1,23 @@
 //Providers
-import { FirebaseService } from "./service/firebase.service";
+
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RoomComponent } from './component/room/room.component';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import{HttpClientModule} from '@angular/common/http';
 //Angular Firebase
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { RoomComponent } from './component/room/room.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { FirebaseService } from "./service/firebase.service";
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
 //Angular Material
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -34,8 +40,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 
-
-
 var firebaseconfig = {
   apiKey: "AIzaSyBgAeG2uvRMSSB7FnKfPGTZNogrtuAOU74",
   authDomain: "chatroom-f2b0f.firebaseapp.com",
@@ -43,7 +47,9 @@ var firebaseconfig = {
   projectId: "chatroom-f2b0f",
   storageBucket: "chatroom-f2b0f.appspot.com",
   messagingSenderId: "622730052233"
-};
+}
+
+
 
 
 const AppRoutes: Routes = [
@@ -87,6 +93,7 @@ const AppRoutes: Routes = [
     RouterModule.forRoot(AppRoutes),
     HttpClientModule,
     PerfectScrollbarModule,
+    AngularFireAuthModule
     
   ],
   providers: [
@@ -96,7 +103,6 @@ const AppRoutes: Routes = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     AngularFireAuth
-
   ],
   bootstrap: [AppComponent]
 })

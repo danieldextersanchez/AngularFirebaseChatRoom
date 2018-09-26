@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'; 
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
+
+//Interface
 import { RoomMessage } from '../interface/messages';
+//Authentication
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { first, tap } from 'rxjs/operators';
-
-
-
+import { auth } from 'firebase';
+//Data
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Injectable()
 export class FirebaseService {
@@ -16,7 +15,8 @@ export class FirebaseService {
   messages: Observable<RoomMessage[]>
   username : string
   comment : string
-  data ;
+  token;
+  user;
   constructor(private afs: AngularFirestore,private afAuth: AngularFireAuth) { }
 
 
@@ -27,17 +27,21 @@ export class FirebaseService {
   }
 
   addComment(RoomMessage : RoomMessage){
-    this.afs.collection('messages').add(RoomMessage)
+    this.afs.collection('messages').add(RoomMessage);
+    console.log(this.afAuth.auth);
   }
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    let what = this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(function(result){
+      // this.token = result.credential.accessToken;
+      // this.user = result.user;
+      window.location.reload(true);
+    } )
   }
   logout() {
     this.afAuth.auth.signOut();
+    window.location.reload(true);
   }
   checklogin(){
-    return this.afAuth.authState.pipe(first());
+    return this.afAuth;
   }
-
-  
 }

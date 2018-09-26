@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
 
   login(){
     this.fbs.login();
+    
   }
 
 
