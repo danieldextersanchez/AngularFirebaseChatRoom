@@ -1,0 +1,24 @@
+<script>
+var sorted = 
+
+[
+    { date : 5 },
+    { date : 2 },
+    { date : 4 },
+    { date : 1 },
+    
+];
+      for(let i =0;i<sorted.length;i++){
+        if(sorted[i+1] != undefined){
+         if(sorted[i]["date"] > sorted[i+1]["date"]  ){
+         temp = sorted[i]["date"];
+         sorted[i]["date"] = sorted[i+1]["date"];
+         sorted[i+1]["date"] = temp;
+         console.log(sorted[i+1]["date"]);
+     }
+    }
+
+}
+
+console.log(sorted);
+</script>
