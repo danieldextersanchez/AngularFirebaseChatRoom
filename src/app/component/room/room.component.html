@@ -1,14 +1,35 @@
 
-<perfect-scrollbar id='room'   [config]="config" > 
-<div class='grid'>
+<perfect-scrollbar id='room'    > 
+<div >
   <div *ngFor="let message of messages | async" class='messagebubble center' >
-    <div>
-      {{ message.username  }} <br>
-      {{message.date | date}} {{ message.date | date: 'h:mm a'}}
-      <!-- {{ message.date.toDate() | date:"MM/dd/yyyy 'at' h:mma"  }} -->
-      <hr>
-      {{ message.message  }}        
-  </div>
+    
+
+      <div class="container">
+          <div class="row">
+              <div class="col-sm" id='messagerinfo' >
+                  <img src="{{message.picture_url}}" style='width:50px;max-height: 100%;'> <br>     
+                  {{ message.username  }} <br>
+                  {{message.date | date}} {{ message.date | date: 'h:mm a'}}
+          
+              </div>
+          
+              <div class="col-sm" style='text-align: left'>
+                  {{ message.message  }}
+              </div>        
+
+
+          </div>
+        </div>
+    
+        
+      
+      
+      
+      
+
+
+
+  
 </div>
      
 </div>

@@ -22,7 +22,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 //Components
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -97,7 +97,8 @@ const AppRoutes: Routes = [
     AngularFireAuthModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule
     
   ],
   providers: [

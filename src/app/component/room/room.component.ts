@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FirebaseService } from "../../service/firebase.service";
 import { RoomMessage } from "../../interface/messages";
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 
 
@@ -39,7 +38,7 @@ export class RoomComponent implements OnInit {
   submitcomment(){
       this.firestore.checklogin().user.subscribe(x=>{
         if(x != null){
-         this.firestore.addComment({ 'username' : x.email, 'message' : this.comment, 'date' : this.Date });
+         this.firestore.addComment({ 'username' : x.email, 'message' : this.comment, 'date' : this.Date,'picture_url':x.photoURL });
         }else{
           alert("login first");
         }

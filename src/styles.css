@@ -11,3 +11,10 @@
     margin-right:auto;
     text-align: center;
 }
+
+body{
+    margin: 0;
+    background: #f2f2f2;
+    font-family : 'Montserrat', sans-serif;
+}
+
