@@ -1,37 +1,42 @@
 
-    <perfect-scrollbar id='room'   [config]="config" > 
-      <div *ngFor="let message of messages | async" class='messagebubble center' >
-        <div>
-          {{ message.username  }} <br>
-          {{message.date | date}} {{ message.date | date: 'h:mm a'}}
-          <!-- {{ message.date.toDate() | date:"MM/dd/yyyy 'at' h:mma"  }} -->
-          <hr>
-          {{ message.message  }}
+<perfect-scrollbar id='room'   [config]="config" > 
+<div class='grid'>
+  <div *ngFor="let message of messages | async" class='messagebubble center' >
+    <div>
+      {{ message.username  }} <br>
+      {{message.date | date}} {{ message.date | date: 'h:mm a'}}
+      <!-- {{ message.date.toDate() | date:"MM/dd/yyyy 'at' h:mma"  }} -->
+      <hr>
+      {{ message.message  }}        
+  </div>
+</div>
+     
+</div>
+</perfect-scrollbar>
+<div class='grid'>
+
+    
+        
+      <div class='center'>
+        <mat-form-field style='width:50%'>
+          <textarea class='commentform' matInput placeholder="Comment" [(ngModel)] = "comment"> </textarea>
+        </mat-form-field>
+        <button mat-flat-button (click)="submitcomment()" style='display:inline'>Send Message</button>
+      </div>
+        
       
-        </div>
-       </div>
-   </perfect-scrollbar>
-
-
-
-
-
-
-
-
-<div>
-
 </div>
 
-<div class="example-form">
-  <mat-form-field class="full-width"  >
-    <input matInput placeholder="Username" [(ngModel)] = "username">
-  </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <textarea matInput placeholder="Comment" [(ngModel)] = "comment"></textarea>
-  </mat-form-field>
-  
-      <button mat-flat-button (click)="submitcomment()" >Send Message</button>
- 
-</div>
+
+
+    
+
+
+
+
+
+
+
+
+

@@ -15,8 +15,7 @@ export class FirebaseService {
   messages: Observable<RoomMessage[]>
   username : string
   comment : string
-  token;
-  user;
+  credential;
   constructor(private afs: AngularFirestore,private afAuth: AngularFireAuth) { }
 
 
@@ -28,20 +27,20 @@ export class FirebaseService {
 
   addComment(RoomMessage : RoomMessage){
     this.afs.collection('messages').add(RoomMessage);
-    console.log(this.afAuth.auth);
   }
   login() {
     let what = this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(function(result){
-      // this.token = result.credential.accessToken;
-      // this.user = result.user;
-      window.location.reload(true);
+      return result.credential;     
     } )
+    this.credential = what;
   }
   logout() {
     this.afAuth.auth.signOut();
-    window.location.reload(true);
   }
   checklogin(){
     return this.afAuth;
+  }  
+  getcredential(){
+    return this.credential;
   }
 }

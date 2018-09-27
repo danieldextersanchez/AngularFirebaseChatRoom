@@ -1,6 +1,3 @@
-//Providers
-
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RoomComponent } from './component/room/room.component';
@@ -8,32 +5,37 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import{HttpClientModule} from '@angular/common/http';
-//Angular Firebase
 
+
+//Angular Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FirebaseService } from "./service/firebase.service";
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
 //Angular Material
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NavbarComponent } from './component/navbar/navbar.component';
-import { HomeComponent } from './component/home/home.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+
+
+//Components
 import { NotfoundComponent } from './notfound/notfound.component';
 import { UserListComponent } from './component/user-list/user-list.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterformComponent } from './component/registerform/registerform.component';
+import { HomeComponent } from './component/home/home.component';
 
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-import { LoginComponent } from './component/login/login.component';
-import { RegisterformComponent } from './component/registerform/registerform.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -74,13 +76,12 @@ const AppRoutes: Routes = [
   declarations: [
     AppComponent,
     RoomComponent,
-    NavbarComponent,
     HomeComponent,
     NotfoundComponent,
     UserListComponent,
     LoginComponent,
     RegisterformComponent,
-    
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +94,10 @@ const AppRoutes: Routes = [
     RouterModule.forRoot(AppRoutes),
     HttpClientModule,
     PerfectScrollbarModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule
     
   ],
   providers: [

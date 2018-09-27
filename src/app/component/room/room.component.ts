@@ -25,14 +25,26 @@ export class RoomComponent implements OnInit {
     let dateFormat = require('dateformat');
     let now = new Date();
     this.Date = dateFormat(now, "isoDateTime");
-
-    
     this.messages = this.firestore.getMessageList();
   }
 
-  submitcomment(){
-    this.firestore.addComment({ 'username' : this.username, 'message' : this.comment, 'date' : this.Date });
-    // this.afs.collection('messages').add({ 'username' : this.username, 'message' : this.comment  })
+
+  asyncstore(data){
+    console.log(data);
+    this.Auth = data;
   }
 
+
+
+  submitcomment(){
+      this.firestore.checklogin().user.subscribe(x=>{
+        if(x != null){
+         this.firestore.addComment({ 'username' : x.email, 'message' : this.comment, 'date' : this.Date });
+        }else{
+          alert("login first");
+        }
+      });
+    }
+    
+  
 }
