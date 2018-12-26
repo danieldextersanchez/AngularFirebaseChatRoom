@@ -66,6 +66,7 @@ export class RoomComponent implements OnInit {
       this.firestore.checklogin().user.subscribe(x=>{
         if(x != null){
          this.firestore.addComment({ 'username' : x.email, 'message' : this.comment, 'date' : this.Date,'picture_url':x.photoURL });
+          this.comment = "";
         }else{
           alert("login first");
         }
